@@ -458,7 +458,7 @@ function next_theme(theme_id)
             list_imgs[i].setAttribute('src', "img/spin.jpeg");
             list_imgs[i].setAttribute('data-src', new_name_img);
             list_imgs[i].classList.add("loader");
-            list_imgs[i].onload = setTimeout(() => end_loader(list_imgs[i]), 0);
+            list_imgs[i].onload = setTimeout(() => end_loader(list_imgs[i]), 1000);
         }
         else
         {
