@@ -122,7 +122,7 @@ for (j=0; j < nb_themes; j++)
             }
             break;
         case 11:
-            nb_imgs = 12;
+            nb_imgs = 18;
             for (i=0; i < nb_imgs; i++) 
             {
                 img_id = parseInt(i + 1);
