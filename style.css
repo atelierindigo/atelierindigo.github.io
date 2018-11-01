@@ -152,7 +152,7 @@ wrapper {
     /* text-align: center; */
     /* -webkit-writing-mode: vertical-rl; */
     /* -ms-writing-mode: vertical-rl; */
-    font-size: 2.5vw;
+    font-size: 1.8vw;
     text-shadow: var(--dark-shadow);
     color: var(--dark);
     /* margin-left: 10%; */
@@ -160,22 +160,23 @@ wrapper {
 }
 
 .contact > p {
-    font-size: 1.5vw;
+    font-size: 1.6vw;
     text-shadow: var(--dark-shadow);
     color: var(--dark);
     margin-left: 4%;
 }
 
 .header > p {
-    text-orientation: sideways;
+    /* text-orientation: sideways; */
     writing-mode: vertical-rl;
     /* text-align: center; */
     /* -webkit-writing-mode: vertical-rl; */
     /* -ms-writing-mode: vertical-rl; */
-    font-size: 2.5vw;
+    font-size: 1.8vw;
     text-shadow: var(--dark-shadow);
     color: var(--dark);
-    /* margin-left: 10%; */
+    /* margin-right: 20%; */
+    margin-left: 8%;
     margin-top: 10%;
     /* text-align: center; */
 }
@@ -422,6 +423,7 @@ img[data-src] {
         text-shadow: var(--dark-shadow);
         color: var(--dark);
         margin-left: 2vw;
+        margin-top: 2vw;
     }
     
     .header > p {
@@ -431,10 +433,12 @@ img[data-src] {
         text-shadow: var(--dark-shadow);
         color: var(--dark);
         margin-left: 2vw;
+        margin-top: 2vw;
     }
 
     .contact > p {
         text-align: center;
+        font-size: 3vw;
     }
 
     /* .titel > p { */
