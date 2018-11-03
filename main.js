@@ -249,7 +249,7 @@ function addElements()
     list_data_src.forEach(img => {
         img.classList.add('loader');
         img.setAttribute('src', img.getAttribute('data-src'));
-        img.onload = setTimeout(() => start_theme(img), 000);
+        img.onload = setTimeout(() => start_theme(img), 1000);
     });
     
 
@@ -458,7 +458,7 @@ function next_theme(theme_id)
             list_imgs[i].setAttribute('src', "img/spin.jpeg");
             list_imgs[i].setAttribute('data-src', new_name_img);
             list_imgs[i].classList.add("loader");
-            list_imgs[i].onload = setTimeout(() => end_loader(list_imgs[i]), 100);
+            list_imgs[i].onload = setTimeout(() => end_loader(list_imgs[i]), 1000);
         }
         else
         {
