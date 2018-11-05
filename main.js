@@ -214,7 +214,7 @@ function addElementsImgs(theme_index)
         // Attribute data-src
         var newAttr = document.createAttribute("data-src");
         // The name of the image
-        newAttr.value = themes_list[0][i];
+        newAttr.value = themes_list[theme_index][i];
         newEl.setAttributeNode(newAttr);
         // Attribute Id
         newAttr = document.createAttribute("id");
@@ -233,6 +233,33 @@ function addElementsImgs(theme_index)
     contNode.appendChild(newImgBlock);
 
     list_imgs = document.querySelectorAll("div.imgs > img");
+
+    list_imgs.forEach(img => 
+        {
+            img.setAttribute('src', "img/spin.jpeg");
+            img.classList.add("loader");
+            img.onload = setTimeout(() => start_theme(img), 1000); 
+        }
+    );
+
+    /*
+    for (let i=0; i < list_imgs.length; i++)
+    {
+        if (i < themes_list[theme_index].length)
+        {
+            new_name_img = themes_list[theme_index][i];
+            list_imgs[i].setAttribute('src', "img/spin.jpeg");
+            list_imgs[i].setAttribute('data-src', new_name_img);
+            list_imgs[i].classList.add("loader");
+            list_imgs[i].onload = setTimeout(() => start_theme(list_imgs[i]), 1000);
+        }
+        else
+        {
+            list_imgs[i].setAttribute('src', "");
+        }
+    }
+    */
+
     // OnClick Event on each image of the container block
     list_imgs.forEach(img => 
         img.addEventListener("click", side_imgClick)
@@ -240,18 +267,52 @@ function addElementsImgs(theme_index)
 
 }
 
+function start_theme(img)
+{
+    const theme_id = img.id;
+    if (theme_id.length <= 2)
+    {   
+        // Start the text animation on a theme´s image
+        startAnimation(list_themes_text[theme_id - 1]);
+        // Make the image to appear
+        img.setAttribute('src', img.getAttribute('data-src'));
+        img.removeAttribute('data-src');    
+    }
+    else
+    {   
+        // the main image
+        // Make the image to appear
+        img.setAttribute('src', img.getAttribute('data-src'));
+        img.removeAttribute('data-src');    
+    }
+        
+    img.classList.remove('loader');   
+}
+
+
 function addElements()
 {
     addElementsImgs(0);
     
-    // from David Walsh Transition´s effect for loading images
-    const list_data_src = document.querySelectorAll('img[data-src]');
-    list_data_src.forEach(img => {
+    // load the first image of each theme
+    list_themes_img.forEach(img => {
+        // animation loader
         img.classList.add('loader');
-        img.setAttribute('src', img.getAttribute('data-src'));
-        img.onload = setTimeout(() => start_theme(img), 000);
+
+        // change the spin image with the image of the them
+        const theme_id = img.id;
+        var new_name_fld = (("img/theme").concat(theme_id)).concat("/"); 
+        var new_name_img = (new_name_fld.concat("img1")).concat(".jpeg");
+        
+        img.setAttribute('data-src', new_name_img);
+
+        img.onload = setTimeout(() => start_theme(img), 1000);
     });
-    
+
+    // load the main image
+    current_img.classList.add('loader');
+    current_img.setAttribute('data-src', "img/theme1/img1.jpeg");
+    current_img.onload = setTimeout(() => start_theme(current_img), 1000);
 
     // OnClick Button
     btn1.addEventListener("click", previous_folio);
@@ -309,21 +370,6 @@ function previous_folio()
     next_theme(theme_id);
 }
 
-function start_theme(img)
-{
-    const theme_id = img.id;
-    if (theme_id.length <= 2)
-    {   
-        // Start the text animation on a theme image
-        startAnimation(list_themes_text[theme_id - 1]);
-        // Make the image to appear
-        img.removeAttribute('data-src');    
-    }
-    else
-        img.removeAttribute('data-src');
-        
-    img.classList.remove('loader');   
-}
 
 function animation_Listener(e)
 {
@@ -449,22 +495,6 @@ function next_theme(theme_id)
     const index_new_theme = parseInt(theme_id) - 1;
     // Readd the nodes (not the same number, it was simplier...)
     addElementsImgs(index_new_theme);
-
-    for (let i=0; i < list_imgs.length; i++)
-    {
-        if (i < themes_list[index_new_theme].length)
-        {
-            new_name_img = themes_list[index_new_theme][i];
-            list_imgs[i].setAttribute('src', "img/spin.jpeg");
-            list_imgs[i].setAttribute('data-src', new_name_img);
-            list_imgs[i].classList.add("loader");
-            list_imgs[i].onload = setTimeout(() => end_loader(list_imgs[i]), 100);
-        }
-        else
-        {
-            list_imgs[i].setAttribute('src', "");
-        }
-    }
 
     list_imgs.forEach(resetOpacity);
 
