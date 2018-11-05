@@ -211,11 +211,19 @@ function addElementsImgs(theme_index)
     for (i=0; i < nb_imgs_side; i++)
     {
         var newEl = document.createElement("img");
+
+        // Attribute src
+        // var newAttr = document.createAttribute("src");
+        // The name of the image
+        // newAttr.value = "img/spin.jpeg";
+        // newEl.setAttributeNode(newAttr);
+
         // Attribute data-src
-        var newAttr = document.createAttribute("data-src");
+        var newAttr = document.createAttribute("src");
         // The name of the image
         newAttr.value = themes_list[theme_index][i];
         newEl.setAttributeNode(newAttr);
+        
         // Attribute Id
         newAttr = document.createAttribute("id");
         var nb = i + 1;
@@ -236,29 +244,11 @@ function addElementsImgs(theme_index)
 
     list_imgs.forEach(img => 
         {
-            img.setAttribute('src', "img/spin.jpeg");
+            // img.setAttribute('src', "img/spin.jpeg");
             img.classList.add("loader");
             img.onload = setTimeout(() => start_theme(img), 1000); 
         }
     );
-
-    /*
-    for (let i=0; i < list_imgs.length; i++)
-    {
-        if (i < themes_list[theme_index].length)
-        {
-            new_name_img = themes_list[theme_index][i];
-            list_imgs[i].setAttribute('src', "img/spin.jpeg");
-            list_imgs[i].setAttribute('data-src', new_name_img);
-            list_imgs[i].classList.add("loader");
-            list_imgs[i].onload = setTimeout(() => start_theme(list_imgs[i]), 1000);
-        }
-        else
-        {
-            list_imgs[i].setAttribute('src', "");
-        }
-    }
-    */
 
     // OnClick Event on each image of the container block
     list_imgs.forEach(img => 
@@ -282,8 +272,8 @@ function start_theme(img)
     {   
         // the main image
         // Make the image to appear
-        img.setAttribute('src', img.getAttribute('data-src'));
-        img.removeAttribute('data-src');    
+        // img.setAttribute('src', img.getAttribute('data-src'));
+        // img.removeAttribute('data-src');    
     }
         
     img.classList.remove('loader');   
@@ -311,7 +301,7 @@ function addElements()
 
     // load the main image
     current_img.classList.add('loader');
-    current_img.setAttribute('data-src', "img/theme1/img1.jpeg");
+    current_img.setAttribute('src', "img/theme1/img1.jpeg");
     current_img.onload = setTimeout(() => start_theme(current_img), 1000);
 
     // OnClick Button
