@@ -456,14 +456,14 @@ function next_theme(theme_id)
     // Change the animation´s name
     if (p_element.style.animationName == "zoomInDark")
     {
-        // setTimeout(startNewAnimation(p_element), 2000);
         startNewAnimation(p_element, p_element.textContent);
     }
     else
     {
         // Change the opacity of the target image
         p_image.style.opacity = opacity;
-        p_element.style.animationName = "zoomInDark";
+        // p_element.style.animationName = "zoomInDark";
+        p_element.style.color = "lightblue";
     }
 
     // Change all the images to the new theme
