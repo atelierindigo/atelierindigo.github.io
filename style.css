@@ -3,7 +3,7 @@
     --primary: #ddd;
     --dark: rgb(0, 0, 0);
     --light: rgb(255, 255, 255);
-    --dark-shadow : 0px 4px 4px  rgb(0, 2, 8);
+    --dark-shadow : 0px 4px 4px  rgb(137, 139, 153);
     --border : rgb(185, 184, 189);
     --background : rgb(102, 101, 101);
 }
@@ -209,14 +209,14 @@ img[data-src] {
 
   @keyframes zoomIn {
     from {
-      opacity: 0;
+      /* opacity: 0; */
       color: rgb(40, 54, 54);
       transform: scale3d(0.2, 0.2, 0.2);
     }
   
     to {
         color: var(--light);
-        opacity: 1;
+        /* opacity: 1; */
     }
   }
   
@@ -227,7 +227,7 @@ img[data-src] {
     }
   
     to {
-        color: rgb(24, 12, 58);
+        color: var(--light);
     }
   }
 
